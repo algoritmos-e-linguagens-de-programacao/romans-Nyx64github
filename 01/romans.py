@@ -2,25 +2,25 @@
     # Implemente sua função aqui
     if not isinstance(num, int) or num <= 0 or num > 3999:
         raise ValueError("O número deve ser maior que 1 e menor que 4000")
-    
-    val = [
-        1000, 900, 500, 400,
-        100, 90, 50, 40,
-        10, 9, 5, 4,
-        1
-    ]
-    syb = [
+        rom2 = [
         "M", "CM", "D", "CD",
         "C", "XC", "L", "XL",
         "X", "IX", "V", "IV",
         "I"
     ]
+    num2 = [
+        1000, 900, 500, 400,
+        100, 90, 50, 40,
+        10, 9, 5, 4,
+        1
+    ]
+
     roman_num = ''
     i = 0
     while num > 0:
         for _ in range(num // val[i]):
-            roman_num += syb[i]
-            num -= val[i]
+            roman_num += rom2[i]
+            num -= num2[i]
         i += 1
     return roman_num
 
