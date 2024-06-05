@@ -45,6 +45,3 @@ def roman_to_int(s):
             num += value
         prev_value = value
     return num
-    
-    print(int_to_roman(2024))
-    print(roman_to_int("MMXXIV"))
