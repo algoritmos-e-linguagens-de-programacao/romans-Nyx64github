@@ -1,8 +1,9 @@
 ++def int_to_roman(num):
     # Implemente sua função aqui
     if not isinstance(num, int) or num <= 0 or num > 3999:
-        raise ValueError("O número deve ser maior que 1 e menor que 4000")
-        rom2 = [
+        raise ValueError("O número deve ser maior que 0 e menor que 4000")
+    
+    rom2 = [
         "M", "CM", "D", "CD",
         "C", "XC", "L", "XL",
         "X", "IX", "V", "IV",
@@ -16,37 +17,33 @@
     ]
 
     roman_num = ''
-    i = 0
-    while num > 0:
-        for _ in range(num // val[i]):
-            roman_num += rom2[i]
-            num -= num2[i]
-        i += 1
+    for i in range(len(num2)):
+        count = num // num2[i]
+        roman_num += rom2[i] * count
+        num -= num2[i] * count
     return roman_num
 
 ++def roman_to_int(s):
     # Implemente sua função aqui
     if not isinstance(s, str) or not s:
-        raise ValueError("Não pode estar vazio")
+        raise ValueError("A string de input não deve estar vazia")
     
     roman_dict = {
-        'M': 1000, 'CM': 900,
-        'D': 500, 'CD': 400,
-        'C': 100, 'XC': 90,
-        'L': 50, 'XL': 40,
-        'X': 10, 'IX': 9,
-        'V': 5, 'IV': 4,
-        'I': 1
+        'I': 1, 'V': 5, 'X': 10, 'L': 50, 
+        'C': 100, 'D': 500, 'M': 1000
     }
-    i = 0
+    
     num = 0
-    while i < len(s):
-        if i + 1 < len(s) and s[i:i+2] in roman_dict:
-            num += roman_dict[s[i:i+2]]
-            i += 2
+    prev_value = 0
+    for char in reversed(s):
+        if char not in roman_dict:
+            raise ValueError("Há letras ou números inválidos na string")
+        value = roman_dict[char]
+        if value < prev_value:
+            num -= value
         else:
-            num += roman_dict[s[i]]
-            i += 1
+            num += value
+        prev_value = value
     return num
 
     print(int_to_roman(x))
