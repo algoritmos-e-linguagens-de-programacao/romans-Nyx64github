@@ -1,4 +1,4 @@
-++def int_to_roman(num):
+def int_to_roman(num):
     # Implemente sua função aqui
     if not isinstance(num, int) or num <= 0 or num > 3999:
         raise ValueError("O número deve ser maior que 0 e menor que 4000")
@@ -23,7 +23,7 @@
         num -= num2[i] * count
     return roman_num
 
-++def roman_to_int(s):
+def roman_to_int(s):
     # Implemente sua função aqui
     if not isinstance(s, str) or not s:
         raise ValueError("A string de input não deve estar vazia")
@@ -45,6 +45,6 @@
             num += value
         prev_value = value
     return num
-
+    
     print(int_to_roman(x))
     print(roman_to_int(x))
